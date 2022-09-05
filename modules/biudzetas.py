@@ -4,7 +4,7 @@ import pickle
 
 class Biudzetas:
     def __init__(self):
-        self._zurnalas = self._gauti_zurnala()
+        self.zurnalas = self._gauti_zurnala()
 
     def _gauti_zurnala(self):
         try:
@@ -19,21 +19,21 @@ class Biudzetas:
 
     def _irasyti_zurnala(self):
         with open("zurnalas.pkl", 'wb') as file:
-            pickle.dump(self._zurnalas, file)
+            pickle.dump(self.zurnalas, file)
 
     def prideti_pajamas(self, suma, siuntejas="darbdavys", papildoma_informacija="atlyginimas"):
         irasas = PajamuIrasas(suma, siuntejas, papildoma_informacija)
-        self._zurnalas.append(irasas)
+        self.zurnalas.append(irasas)
         self._irasyti_zurnala()
 
     def prideti_islaidas(self, suma, atsiskaitymo_budas="kortele", isigyta_preke_paslauga="pirkinys"):
         irasas = IslaiduIrasas(suma, atsiskaitymo_budas, isigyta_preke_paslauga)
-        self._zurnalas.append(irasas)
+        self.zurnalas.append(irasas)
         self._irasyti_zurnala()
 
     def balansas(self):
         bendra = 0
-        for irasas in self._zurnalas:
+        for irasas in self.zurnalas:
             if type(irasas) is PajamuIrasas:
                 bendra += irasas.suma
             if type(irasas) is IslaiduIrasas:
@@ -43,10 +43,10 @@ class Biudzetas:
 
     def ataskaita(self):
         print("Ataskaita:")
-        for irasas in self._zurnalas:
+        for irasas in self.zurnalas:
             print(irasas)
         print("--------------")
 
     def isvalyti_biudzeta(self):
-        self._zurnalas = []
+        self.zurnalas = []
         self._irasyti_zurnala()
