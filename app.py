@@ -1,6 +1,5 @@
 from tkinter import (Tk, Label, Entry, Frame,
-                     Button, BOTTOM, TOP, RIGHT, LEFT, Y,
-                     Menu, SUNKEN, W, X, END, Listbox, Scrollbar)
+                     Button, LEFT, END, Listbox, Scrollbar)
 from modules.biudzetas import Biudzetas
 
 biudzetas1 = Biudzetas()
