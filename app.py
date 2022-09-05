@@ -8,6 +8,7 @@ biudzetas1 = Biudzetas()
 
 def renew():
     entry1.delete(0, "end")
+    update_entry.delete(0, "end")
     box.delete(0, "end")
     box.insert(END, *biudzetas1.zurnalas)
     balance['text'] = f"Balansas: {biudzetas1.balansas()}"
@@ -22,6 +23,16 @@ def add_income():
 def add_expense():
     suma = float(entry2.get())
     biudzetas1.prideti_islaidas(suma)
+    renew()
+
+def delete_item():
+    biudzetas1.zurnalas.pop(box.curselection()[0])
+    biudzetas1.irasyti_zurnala()
+    renew()
+
+def update_item():
+    biudzetas1.zurnalas[box.curselection()[0]].suma = float(update_entry.get())
+    biudzetas1.irasyti_zurnala()
     renew()
 
 
@@ -45,6 +56,9 @@ box = Listbox(frame3, yscrollcommand=scrollbar.set)
 scrollbar.config(command=box.yview())
 label4 = Label(frame3, text="Įrašai: ")
 box.insert(END, *biudzetas1.zurnalas)
+delete_button = Button(frame3, text="Ištrinti", command=delete_item)
+update_button = Button(frame3, text="Redaguoti", command=update_item)
+update_entry = Entry(frame3)
 
 frame1.pack()
 label1.pack()
@@ -58,6 +72,9 @@ button2.pack()
 frame3.pack()
 balance.pack()
 label4.pack()
-scrollbar.pack(side=RIGHT, fill=Y)
 box.pack(side=LEFT)
+scrollbar.pack(side=LEFT, fill=Y)
+delete_button.pack()
+update_entry.pack()
+update_button.pack()
 window.mainloop()

@@ -17,19 +17,19 @@ class Biudzetas:
                 pickle.dump(zurnalas, file)
                 return zurnalas
 
-    def _irasyti_zurnala(self):
+    def irasyti_zurnala(self):
         with open("zurnalas.pkl", 'wb') as file:
             pickle.dump(self.zurnalas, file)
 
     def prideti_pajamas(self, suma, siuntejas="darbdavys", papildoma_informacija="atlyginimas"):
         irasas = PajamuIrasas(suma, siuntejas, papildoma_informacija)
         self.zurnalas.append(irasas)
-        self._irasyti_zurnala()
+        self.irasyti_zurnala()
 
     def prideti_islaidas(self, suma, atsiskaitymo_budas="kortele", isigyta_preke_paslauga="pirkinys"):
         irasas = IslaiduIrasas(suma, atsiskaitymo_budas, isigyta_preke_paslauga)
         self.zurnalas.append(irasas)
-        self._irasyti_zurnala()
+        self.irasyti_zurnala()
 
     def balansas(self):
         bendra = 0
@@ -49,4 +49,4 @@ class Biudzetas:
 
     def isvalyti_biudzeta(self):
         self.zurnalas = []
-        self._irasyti_zurnala()
+        self.irasyti_zurnala()
