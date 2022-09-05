@@ -17,22 +17,22 @@ def renew():
 def add_income():
     suma = float(entry1.get())
     biudzetas1.prideti_pajamas(suma)
+    biudzetas1.irasyti_zurnala()
     renew()
 
 
 def add_expense():
     suma = float(entry2.get())
     biudzetas1.prideti_islaidas(suma)
+    biudzetas1.irasyti_zurnala()
     renew()
 
 def delete_item():
     biudzetas1.zurnalas.pop(box.curselection()[0])
-    biudzetas1.irasyti_zurnala()
     renew()
 
 def update_item():
     biudzetas1.zurnalas[box.curselection()[0]].suma = float(update_entry.get())
-    biudzetas1.irasyti_zurnala()
     renew()
 
 
