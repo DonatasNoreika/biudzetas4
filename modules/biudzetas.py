@@ -21,12 +21,12 @@ class Biudzetas:
         with open("zurnalas.pkl", 'wb') as file:
             pickle.dump(self.zurnalas, file)
 
-    def prideti_pajamas(self, suma, siuntejas="darbdavys", papildoma_informacija="atlyginimas"):
+    def prideti_pajamas(self, suma, siuntejas, papildoma_informacija="atlyginimas"):
         irasas = PajamuIrasas(suma, siuntejas, papildoma_informacija)
         self.zurnalas.append(irasas)
         self.irasyti_zurnala()
 
-    def prideti_islaidas(self, suma, atsiskaitymo_budas="kortele", isigyta_preke_paslauga="pirkinys"):
+    def prideti_islaidas(self, suma, atsiskaitymo_budas, isigyta_preke_paslauga="pirkinys"):
         irasas = IslaiduIrasas(suma, atsiskaitymo_budas, isigyta_preke_paslauga)
         self.zurnalas.append(irasas)
         self.irasyti_zurnala()
